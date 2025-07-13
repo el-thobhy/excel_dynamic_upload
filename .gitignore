@@ -416,3 +416,8 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# security appsettings is confidential
+[Aa]pp[Ss]ettings.json
+/.history
+/.vscode
