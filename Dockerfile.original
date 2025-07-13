@@ -12,10 +12,10 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["ExcelUploadApi.csproj", "."]
-RUN dotnet restore "./ExcelUploadApi.csproj"
+COPY ["ExcelUploadApi/ExcelUploadApi.csproj", "ExcelUploadApi/"]
+RUN dotnet restore "./ExcelUploadApi/ExcelUploadApi.csproj"
 COPY . .
-WORKDIR "/src/."
+WORKDIR "/src/ExcelUploadApi"
 RUN dotnet build "./ExcelUploadApi.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
