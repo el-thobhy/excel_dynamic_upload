@@ -17,7 +17,7 @@ namespace ExcelUploadApi.Helpers
             for(int i = 0; i < headerRow.LastCellNum; i++)
             {
                 var cell = headerRow.GetCell(i);
-                headers.Add(cell?.ToString()?.Trim() ?? $"Column{i}");
+                headers.Add(cell?.ToString()?.Trim().Replace(",", "") ?? $"Column{i}");
             }
 
             for(int i = 1; i<= sheet.LastRowNum; i++) //start from row 1, karena row 0 adalaha header
@@ -28,7 +28,7 @@ namespace ExcelUploadApi.Helpers
                 for (int j = 0; j < row.LastCellNum; j++)
                 {
                     var cell = row.GetCell(j);
-                    rowData.Add(cell?.ToString()?.Trim() ?? string.Empty);
+                    rowData.Add(cell?.ToString()?.Trim().Replace(";", "") ?? string.Empty);
                 }
                 rows.Add(rowData);
             }
