@@ -24,7 +24,8 @@ namespace ExcelUploadApi.Controllers
             try
             {
                 _uploadExcelService.ProcessExcel(file, tableName);
-                return Ok("File uploaded and processed successfully.");
+                var result = _uploadExcelService.ReadTable(tableName);
+                return Ok(result);
             }
             catch (Exception ex)
             {
